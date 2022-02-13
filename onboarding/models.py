@@ -6,6 +6,7 @@ from django.db.models import (
     Model,
     CASCADE,
 )
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class Creator(Model):
@@ -16,13 +17,13 @@ class Creator(Model):
 
 
 class LoginID(Model):
-    loginID = IntegerField()
+    loginID = CharField(max_length=10, validators=[MinLengthValidator(4)])
     group = BooleanField()
 
 
 class Survey(Model):
     title = CharField(max_length=100)
-    loginID = ForeignKey(LoginID, default=0, on_delete=CASCADE)
+    loginID = ForeignKey(LoginID, default="0000000000", on_delete=CASCADE)
     creator = ForeignKey(Creator, on_delete=CASCADE)
     closed = BooleanField()
 
