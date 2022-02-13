@@ -9,4 +9,3 @@
 ## Creating new pipenv (venv) using Windows ##
 - ```pipenv --python 3.10 install django```
 - ```pipenv shell```
-- ```pip install django```
