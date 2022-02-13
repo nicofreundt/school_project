@@ -10,8 +10,8 @@ def index(response):
     )
 
 
-def onbaordParticipant(response):
-    return HttpResponse("<h1>Please enter Survey-ID:</h1>")
+def onboardParticipant(response):
+    return HttpResponse("<h1>Please enter Login-ID:</h1>")
 
 
 def onboardCreator(response):
