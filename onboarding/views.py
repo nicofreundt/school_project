@@ -11,7 +11,7 @@ def index(response):
 
 
 def onboardParticipant(response):
-    return HttpResponse("<h1>Please enter Login-ID:</h1>")
+    return render(response, "onboardParticipant.html", {})
 
 
 def onboardCreator(response):
