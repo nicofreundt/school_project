@@ -1,6 +1,6 @@
 # Schul-Projekt - Feedback_Django #
 
-## VERSIONS ##
+## Versions ##
 - Python 3.10.2
 - Django 4.0.2
 - MariaDB 10.7.3
