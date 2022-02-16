@@ -10,3 +10,6 @@ class Creator(Model):
     last_name = CharField(max_length=50)
     email = EmailField()
     # LDAP
+
+    def __str__(self):
+        return self.first_name + " " + self.last_name + " | " + self.email
