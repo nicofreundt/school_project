@@ -18,23 +18,7 @@ def login_creator(response):
     )
 
 
-def login_creator_ldap(response):
-    return HttpResponse("<h1><LDAP Login></h1>")
-
-
-def login_creator_standard(response):
-    return HttpResponse("<h1>Standard Login></h1>")
-
-
 def onboard_creator(response):
     return HttpResponse(
         "<h1><a href='creator/sign_up_ldap'>LDAP Sign-Up</a></h1><br><h1><a href='creator/sign_up_test'>Test Sign-Up</a></h1>"
     )
-
-
-def onboard_creator_ldap(response):
-    return HttpResponse("<h1><LDAP Onboarding></h1>")
-
-
-def onboard_creator_standard(response):
-    return HttpResponse("<h1>Standard Onboarding></h1>")
