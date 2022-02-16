@@ -2,9 +2,10 @@ from django.forms import ModelForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
+from django.conf import settings
 
 from survey.models import Survey
-from user_management.models import Creator
+from django.contrib.auth.models import User
 
 # Create your views here.
 def survey_overview(response):
@@ -19,7 +20,7 @@ class create_survey(View):
         Survey(
             title=request.POST.get("title"),
             description=request.POST.get("description"),
-            creator=Creator.objects.get(pk=1),
+            creator=User.objects.get(pk=1),
         ).save()
         return redirect("/survey/")
 

@@ -10,16 +10,14 @@ from django.db.models import (
 )
 from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
-
-# Own Models
-from user_management.models import Creator
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Survey(Model):
     id = UUIDField(primary_key=True, default=uuid4, editable=False)
     title = CharField(max_length=100)
     description = TextField()
-    creator = ForeignKey(Creator, on_delete=CASCADE)
+    creator = ForeignKey(User, on_delete=CASCADE)
     closed = BooleanField(default=True)
 
     def __str__(self):
