@@ -20,7 +20,10 @@ class Survey(Model):
     title = CharField(max_length=100)
     description = TextField()
     creator = ForeignKey(Creator, on_delete=CASCADE)
-    closed = BooleanField()
+    closed = BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Question(Model):
