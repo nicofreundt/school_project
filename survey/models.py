@@ -21,7 +21,15 @@ class Survey(Model):
     closed = BooleanField(default=True)
 
     def __str__(self):
-        return self.title
+        return (
+            self.title
+            + " | "
+            + self.description
+            + " | "
+            + self.creator.username
+            + " | "
+            + str(self.closed)
+        )
 
 
 class Question(Model):
