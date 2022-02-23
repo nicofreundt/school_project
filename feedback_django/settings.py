@@ -27,9 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1"]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000.code.apelma.de'
-]
+CSRF_TRUSTED_ORIGINS = ["https://8000.code.apelma.de", "https://127.0.0.1"]
 
 
 # Application definition
