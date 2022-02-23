@@ -1,3 +1,7 @@
+# custom exclusions
+!__init__.py
+migrations/
+
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,venv,visualstudiocode,python
 
 ### Django ###
