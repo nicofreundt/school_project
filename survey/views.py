@@ -11,14 +11,14 @@ from survey.models import Survey
 def survey_overview(response):
     return render(
         response,
-        "survey_overview.html",
+        "survey/overview.html",
         {"surveys": Survey.objects.all().order_by("title").iterator()},
     )
 
 
 class create_survey(View):
     def get(self, request, id=None, *args, **kwargs):
-        return render(request, "survey_create.html", {"form": SurveyForm()})
+        return render(request, "survey/create.html", {"form": SurveyForm()})
 
     def post(self, request, id=None, *args, **kwargs):
         Survey(
