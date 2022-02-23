@@ -14,3 +14,10 @@
 ## Creating new pipenv (venv) using Windows ##
 - ```pipenv --python 3.10 install django```
 - ```pipenv shell```
+
+## Start dev server
+- python3.10 manage.py runserver
+
+## Migrate database
+- python3.10 manage.py makemigrations
+- python3.10 manage.py migrate
