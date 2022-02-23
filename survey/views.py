@@ -9,18 +9,16 @@ from survey.models import Survey
 
 # Create your views here.
 def survey_overview(response):
-    surveysHTML = "<ul>"
-    # "-title" means DESC
-    for survey in Survey.objects.all().order_by("title").iterator():
-        surveysHTML += "<li>" + str(survey) + "</li>"
-    surveysHTML += "</ul>"
-
-    return HttpResponse(surveysHTML)
+    return render(
+        response,
+        "survey_overview.html",
+        {"surveys": Survey.objects.all().order_by("title").iterator()},
+    )
 
 
 class create_survey(View):
     def get(self, request, id=None, *args, **kwargs):
-        return render(request, "create_survey.html", {"form": SurveyForm()})
+        return render(request, "survey_create.html", {"form": SurveyForm()})
 
     def post(self, request, id=None, *args, **kwargs):
         Survey(
@@ -28,7 +26,7 @@ class create_survey(View):
             description=request.POST.get("description"),
             creator=User.objects.get(pk=1),
         ).save()
-        return redirect("/overview")
+        return redirect("/survey/overview")
 
 
 class SurveyForm(ModelForm):

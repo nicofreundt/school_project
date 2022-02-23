@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Survey-Overview</title>
+  </head>
+  <body>
+    <ul>
+      {% for survey in surveys %}
+      <li>{{ survey.title }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
