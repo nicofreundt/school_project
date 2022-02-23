@@ -29,6 +29,10 @@ ALLOWED_HOSTS = [
     '8000.code.apelma.de'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    '8000.code.apelma.de'
+]
+
 
 # Application definition
 
