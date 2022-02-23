@@ -25,9 +25,7 @@ SECRET_KEY = "django-insecure-dc+*l_7e29!p&1pl^^log_3$jtdbnc1le*61&9s&wrlqc0%0o*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '8000.code.apelma.de'
-]
+ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1"]
 
 
 # Application definition
