@@ -5,7 +5,12 @@
   <body>
     <ul>
       {% for survey in surveys %}
-      <li>{{ survey.title }}</li>
+      <li>
+        {{ survey.title }}
+        <button type="button">
+          <a href="/survey/{{ survey.id }}/edit">Edit</a>
+        </button>
+      </li>
       {% endfor %}
     </ul>
   </body>
