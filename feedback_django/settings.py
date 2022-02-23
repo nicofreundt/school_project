@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = [
-    '8000.code.apelma.de'
+    'https://8000.code.apelma.de'
 ]
 
 
