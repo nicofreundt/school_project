@@ -1,4 +1,4 @@
-# School-Project - Surveys #
+# School-Project - Survey-System #
 
 ## Techstack ##
 
