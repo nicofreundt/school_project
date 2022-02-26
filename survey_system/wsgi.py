@@ -1,5 +1,5 @@
 """
-WSGI config for feedback_django project.
+WSGI config for survey_system project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "feedback_django.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "survey_system.settings")
 
 application = get_wsgi_application()
