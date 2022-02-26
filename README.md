@@ -18,11 +18,11 @@
 - ```pipenv --python 3.10 install django```
 - ```pipenv shell```
 
-## Start dev server
+## Start dev server ##
 
 - ```python3.10 manage.py runserver```
 
-## Migrate database
+## Migrate database ##
 
 - ```python3.10 manage.py makemigrations```
 - ```python3.10 manage.py migrate```
