@@ -7,8 +7,8 @@
       {% for survey in surveys %}
       <li>
         {{ survey.title }}
-        <button type="button">
-          <a href="/survey/{{ survey.id }}/edit">Edit</a>
+        <button type="button" class="btn btn-edit">
+          <a href="{% url 'survey_edit' survey=survey.id %}">Edit</a>
         </button>
       </li>
       {% endfor %}
