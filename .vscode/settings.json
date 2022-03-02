@@ -1,3 +1,19 @@
 {
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MariaDB",
+      "name": "Local",
+      "socketPath": "/run/mysqld/mysqld.sock",
+      "database": "feedback",
+      "username": "root",
+      "password": "12345678"
+    }
+  ]
 }

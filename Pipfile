@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 mysqlclient = "*"
+django-auth-ldap = "*"
+python-dotenv = "*"
 
 [dev-packages]
 black = "*"
