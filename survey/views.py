@@ -17,7 +17,7 @@ def survey_overview(response):
     )
 
 
-class create_survey(View):
+class survey_create(View):
     def get(self, request, id=None, *args, **kwargs):
         return render(request, "survey/create.html", {"form": SurveyForm()})
 
@@ -34,3 +34,9 @@ class SurveyForm(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description"]
+
+class survey_edit(View):
+    def get(self, request, id=None, *args, **kwargs):
+        return HttpResponse(
+            'Test'
+        )
