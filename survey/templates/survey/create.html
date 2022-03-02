@@ -1,11 +1,10 @@
-<html>
-  <head>
-    <title>Create new Survey</title>
-  </head>
-  <body>
-    <form method="POST">
-      {% csrf_token %} {{ form }}
-      <input class="btn" type="submit" value="Create" />
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Survey Create{% endblock %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %} {{ form }}
+  <input class="btn" type="submit" value="Create" />
+</form>
+{% endblock %}

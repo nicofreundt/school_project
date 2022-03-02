@@ -37,6 +37,4 @@ class SurveyForm(ModelForm):
 
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
-        return HttpResponse(
-            'Test'
-        )
+        return render(request, 'survey/edit.html')

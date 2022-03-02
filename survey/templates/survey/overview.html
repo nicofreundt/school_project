@@ -1,17 +1,16 @@
-<html>
-  <head>
-    <title>Survey-Overview</title>
-  </head>
-  <body>
-    <ul>
-      {% for survey in surveys %}
-      <li>
-        {{ survey.title }}
-        <button type="button" class="btn btn-edit">
-          <a href="{% url 'survey_edit' survey=survey.id %}">Edit</a>
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Survey Overview{% endblock %}
+
+{% block content %}
+<ul>
+  {% for survey in surveys %}
+  <li>
+    {{ survey.title }}
+    <button type="button" class="btn btn-edit">
+      <a href="{% url 'survey_edit' survey=survey.id %}">Edit</a>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
