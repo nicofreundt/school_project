@@ -29,7 +29,6 @@ class survey_create(View):
         ).save()
         return redirect("/survey/overview")
 
-
 class SurveyForm(ModelForm):
     class Meta:
         model = Survey
@@ -37,4 +36,5 @@ class SurveyForm(ModelForm):
 
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
-        return render(request, 'survey/edit.html')
+        s = Survey.objects.get(pk=kwargs['survey'])
+        return render(request, 'survey/edit.html', {'survey': s})
