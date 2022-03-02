@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-dc+*l_7e29!p&1pl^^log_3$jtdbnc1le*61&9s&wrlqc0%0o*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1"]
+ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1", '192.168.88.174']
 
 CSRF_TRUSTED_ORIGINS = ["https://8000.code.apelma.de", "https://127.0.0.1"]
 
