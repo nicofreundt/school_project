@@ -16,5 +16,6 @@
       "username": "root",
       "password": "12345678"
     }
-  ]
+  ],
+  "python.pythonPath": "/root/.virtualenvs/schul_projekt-SE6ymnIC/bin/python"
 }
