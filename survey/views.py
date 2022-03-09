@@ -6,9 +6,10 @@ from django.contrib.auth import get_user_model
 from django.db.models.functions import Lower
 
 from survey.models import Survey
+
 user_model = get_user_model()
 
-# Create your views here.
+# VIEWS #
 def survey_overview(response):
     return render(
         response,
@@ -29,12 +30,15 @@ class survey_create(View):
         ).save()
         return redirect("/survey/overview")
 
+
+class survey_edit(View):
+    def get(self, request, id=None, *args, **kwargs):
+        s = Survey.objects.get(pk=kwargs["survey"])
+        return render(request, "survey/edit.html", {"survey": s})
+
+
+# MODEL-FORMS #
 class SurveyForm(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description"]
-
-class survey_edit(View):
-    def get(self, request, id=None, *args, **kwargs):
-        s = Survey.objects.get(pk=kwargs['survey'])
-        return render(request, 'survey/edit.html', {'survey': s})
