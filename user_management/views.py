@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.shortcuts import redirect
 
-# Create your views here.
+# VIEWs #
 def landing_page(response):
     """Check if user is authenticated and redirect accordingly"""
-    if(response.user.is_authenticated):
-        return redirect('survey_overview'); # To Survey overview
+
+    if response.user.is_authenticated:
+        return redirect("survey_overview")
+
     else:
-        return redirect('login'); # To login
+        return redirect("login")
