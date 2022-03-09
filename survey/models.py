@@ -11,7 +11,8 @@ from django.db.models import (
 from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
-user_model = get_user_model();
+
+user_model = get_user_model()
 
 # Create your models here.
 class Survey(Model):
