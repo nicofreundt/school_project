@@ -1,7 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% block title %}Survey Edit{% endblock %}
+{% block title %} Edit Survey {% endblock %} 
 
 {% block content %}
-Edit Survey - {{ survey.title }}
+    <div class="d-grid gap-4">
+        <div>
+            <h4>Title:</h4>
+            {{ survey.title }}
+        </div>
+        <div>
+            <h4>Description:</h4>
+            {{ survey.description }} 
+        </div>
+        <div>
+            <h4>Questions:</h4>
+        </div>
+    </div
 {% endblock %}
