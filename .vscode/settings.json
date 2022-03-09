@@ -1,5 +1,6 @@
 {
   "python.formatting.provider": "black",
+  "python.terminal.activateEnvironment": true,
   "sqltools.connections": [
     {
       "mysqlOptions": {
