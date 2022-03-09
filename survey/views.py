@@ -1,12 +1,11 @@
 from django.forms import ModelForm
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import get_user_model
-from django.db.models.functions import Lower
 
 from survey.models import Survey
 
+# GLOBALS #
 user_model = get_user_model()
 
 # VIEWS #
@@ -33,8 +32,8 @@ class survey_create(View):
 
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
-        s = Survey.objects.get(pk=kwargs["survey"])
-        return render(request, "survey/edit.html", {"survey": s})
+        survey = Survey.objects.get(pk=kwargs["survey"])
+        return render(request, "survey/edit.html", {"survey": survey})
 
 
 # MODEL-FORMS #
