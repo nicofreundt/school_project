@@ -4,7 +4,7 @@
 
 {% block content %}
 <form method="POST">
-  {% csrf_token %} {{ form }}
+  {% csrf_token %} {{ surveyForm }}
   <input class="btn" type="submit" value="Create" />
 </form>
 {% endblock %}

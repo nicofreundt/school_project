@@ -3,17 +3,8 @@
 {% block title %} Edit Survey {% endblock %} 
 
 {% block content %}
-    <div class="d-grid gap-4">
-        <div>
-            <h4>Title:</h4>
-            {{ survey.title }}
-        </div>
-        <div>
-            <h4>Description:</h4>
-            {{ survey.description }} 
-        </div>
-        <div>
-            <h4>Questions:</h4>
-        </div>
-    </div
+    <form method="POST">
+        {% csrf_token %} {{ surveyForm }}
+        <input class="btn" type="submit" value="Save" />
+    </form>
 {% endblock %}
