@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import get_user_model
 
-from survey.models import Survey
+from survey.models import Question, Survey
 
 # GLOBALS #
 user_model = get_user_model()
@@ -44,7 +44,7 @@ class survey_edit(View):
         return render(
             request,
             "survey/edit.html",
-            {"surveyForm": surveyFormEdit, "survey": survey},
+            {"surveyForm": surveyFormEdit, "questions": survey.question_set.all()},
         )
 
     def post(self, request, id=None, *args, **kwargs):
@@ -63,6 +63,32 @@ class survey_edit(View):
         return redirect("/survey/overview")
 
 
+class question_edit(View):
+    def get(self, request, id=None, *args, **kwargs):
+        question = Question.objects.get(pk=kwargs["question"])
+        questionFormEdit = QuestionFormEdit(
+            {
+                "position": question.position,
+                "text": question.text,
+            }
+        )
+
+        return render(
+            request,
+            "question/edit.html",
+            {"questionForm": questionFormEdit},
+        )
+
+    def post(self, request, id=None, *args, **kwargs):
+        questionToEdit = Question.objects.get(pk=kwargs["question"])
+        questionToEdit.title = request.POST.get("position")
+        questionToEdit.description = request.POST.get("text")
+
+        questionToEdit.save()
+
+        return redirect("/survey/edit/" + questionToEdit.survey.id)
+
+
 # MODEL-FORMS #
 class SurveyFormCreate(ModelForm):
     class Meta:
@@ -74,3 +100,9 @@ class SurveyFormEdit(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description", "closed"]
+
+
+class QuestionFormEdit(ModelForm):
+    class Meta:
+        model = Question
+        fields = ["position", "text"]

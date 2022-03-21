@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+
+{% block title %} Edit Survey {% endblock %} 
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %} {{ questionForm }}
+        <input class="btn" type="submit" value="Save" />
+    </form>
+{% endblock %}
