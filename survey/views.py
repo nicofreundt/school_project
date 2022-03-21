@@ -19,12 +19,18 @@ def survey_overview(response):
 
 class survey_create(View):
     def get(self, request, id=None, *args, **kwargs):
-        return render(request, "survey/create.html", {"surveyForm": SurveyFormCreate()})
+        return render(request, "survey/create.html", {"surveyForm": SurveyForm()})
 
     def post(self, request, id=None, *args, **kwargs):
+        if request.POST.get("closed") == "on":
+            closed = True
+        else:
+            closed = False
+
         Survey(
             title=request.POST.get("title"),
             description=request.POST.get("description"),
+            closed=closed,
             creator=user_model.objects.get(pk=1),
         ).save()
         return redirect("/survey/overview")
@@ -33,7 +39,7 @@ class survey_create(View):
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
         survey = Survey.objects.get(pk=kwargs["survey"])
-        surveyFormEdit = SurveyFormEdit(
+        surveyFormEdit = SurveyForm(
             {
                 "title": survey.title,
                 "description": survey.description,
@@ -66,7 +72,7 @@ class survey_edit(View):
 class question_edit(View):
     def get(self, request, id=None, *args, **kwargs):
         question = Question.objects.get(pk=kwargs["question"])
-        questionFormEdit = QuestionFormEdit(
+        questionFormEdit = QuestionForm(
             {
                 "position": question.position,
                 "text": question.text,
@@ -90,19 +96,13 @@ class question_edit(View):
 
 
 # MODEL-FORMS #
-class SurveyFormCreate(ModelForm):
-    class Meta:
-        model = Survey
-        fields = ["title", "description"]
-
-
-class SurveyFormEdit(ModelForm):
+class SurveyForm(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description", "closed"]
 
 
-class QuestionFormEdit(ModelForm):
+class QuestionForm(ModelForm):
     class Meta:
         model = Question
         fields = ["position", "text"]
