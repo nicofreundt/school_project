@@ -5,6 +5,6 @@
 {% block content %}
 <form method="POST">
   {% csrf_token %} {{ form }}
-  <input class="btn" type="submit" value="Create" />
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
 {% endblock %}
