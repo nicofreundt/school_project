@@ -1,7 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% block title %}Survey Edit{% endblock %}
+{% block title %} Edit Survey {% endblock %} 
 
 {% block content %}
-Edit Survey - {{ survey.title }}
+    <form method="POST">
+        {% csrf_token %} {{ surveyForm }}
+        <input class="btn" type="submit" value="Save" />
+    </form>
+    {% for question in questions %}
+    <li>
+        {{ question.text }}
+        <button type="button" class="btn btn-edit">
+            <a href="{% url 'question_edit' question=question.id %}">Edit</a>
+        </button>
+    </li>
+  {% endfor %}
 {% endblock %}

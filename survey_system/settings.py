@@ -15,6 +15,7 @@ from pathlib import Path
 import ldap
 from django_auth_ldap.config import LDAPSearch, LDAPGroupType
 from dotenv import load_dotenv
+
 load_dotenv()  # loads the configs from .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +30,7 @@ SECRET_KEY = "django-insecure-dc+*l_7e29!p&1pl^^log_3$jtdbnc1le*61&9s&wrlqc0%0o*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1", '192.168.88.174', 'localhost']
+ALLOWED_HOSTS = ["8000.code.apelma.de", "127.0.0.1", "192.168.88.174", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = ["https://8000.code.apelma.de", "https://127.0.0.1"]
 
@@ -61,7 +62,7 @@ ROOT_URLCONF = "survey_system.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["survey_system/templates/"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,25 +86,25 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "survey_system",
         "USER": "root",
-        "PASSWORD": "12345678",
+        "PASSWORD": "123",
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }
 }
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'django_auth_ldap.backend.LDAPBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "django_auth_ldap.backend.LDAPBackend",
 )
 
-AUTH_LDAP_SERVER_URI = str(os.getenv('LDAP_SERVER_URI'))
-AUTH_LDAP_BIND_DN = str(os.getenv('LDAP_BIND_DN'))
-AUTH_LDAP_BIND_PASSWORD = str(os.getenv('LDAP_BIND_PASSWORD'))
+AUTH_LDAP_SERVER_URI = str(os.getenv("LDAP_SERVER_URI"))
+AUTH_LDAP_BIND_DN = str(os.getenv("LDAP_BIND_DN"))
+AUTH_LDAP_BIND_PASSWORD = str(os.getenv("LDAP_BIND_PASSWORD"))
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    str(os.getenv('LDAP_BIND_USER_SEARCH')), ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+    str(os.getenv("LDAP_BIND_USER_SEARCH")), ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
 )
 
 # Password validation

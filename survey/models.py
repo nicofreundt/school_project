@@ -8,12 +8,14 @@ from django.db.models import (
     Model,
     CASCADE,
 )
-from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
-user_model = get_user_model();
+from uuid import uuid4
 
-# Create your models here.
+# GLOBALS #
+user_model = get_user_model()
+
+# MODELS #
 class Survey(Model):
     id = UUIDField(primary_key=True, default=uuid4, editable=False)
     title = CharField(max_length=100)
