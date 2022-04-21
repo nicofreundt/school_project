@@ -2,8 +2,8 @@
 
 ## Techstack ##
 
-- Python 3.10.2
-- Django 4.0.2
+- Python 3.10.4
+- Django 4.0.4
 - MariaDB 10.7.3
 
 ## Tutorial-Notes ##
