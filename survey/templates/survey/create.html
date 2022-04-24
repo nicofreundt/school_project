@@ -4,7 +4,9 @@
 
 {% block content %}
 <form method="POST">
-  {% csrf_token %} {{ surveyForm }}
-  <button type="submit" class="btn btn-primary">Create</button>
+  {% csrf_token %} 
+  {{ surveyForm }}
+  <hr>
+  <button type="submit" class="btn btn-primary" style="font-size: 20px; height: 4vh; min-height: 35px; width: 100%; padding: 0px; margin: 0px 0px 2.5% 0px">Create</button>
 </form>
 {% endblock %}
