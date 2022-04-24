@@ -1,9 +1,10 @@
+from django import forms
 from django.forms import ModelForm
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import get_user_model
 
-from survey.models import Question, Survey
+from .models import Question, Survey
 
 # GLOBALS #
 user_model = get_user_model()
@@ -100,6 +101,13 @@ class SurveyForm(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description", "closed"]
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control", "style":"margin: 0.5% 0px 1% 0px; padding: 0.5%"}),
+            "description": forms.Textarea(attrs={"class": "form-control", "style":"margin: 0.5% 0px 1% 0px; padding: 0.5%"}),
+            "closed": forms.CheckboxInput(
+                attrs={"class": "form-check form-check-input", "style":"height: 4vh; width: 4vh; margin: 0.5% 0px 0.5% 0px"}
+            ),
+        }
 
 
 class QuestionForm(ModelForm):
