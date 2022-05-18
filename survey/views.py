@@ -17,6 +17,9 @@ def survey_overview(response):
         {"surveys": Survey.objects.all().order_by("title").iterator()},
     )
 
+def survey_delete(request, survey):
+  Survey.objects.get(id=survey).delete()
+  return redirect("/survey/overview")
 
 class survey_create(View):
     def get(self, request, id=None, *args, **kwargs):
