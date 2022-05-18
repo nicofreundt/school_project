@@ -36,12 +36,6 @@ class survey_create(View):
         ).save()
         return redirect("/survey/overview")
 
-class survey_delete(View):
-    def post(self, request, id=None, *args, **kwargs):
-        Survey.objects.get(pk=kwargs["survey"]).delete()
-
-        return redirect("/survey/overview")
-
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
         survey = Survey.objects.get(pk=kwargs["survey"])
@@ -74,7 +68,6 @@ class survey_edit(View):
 
         return redirect("/survey/overview")
 
-
 class question_edit(View):
     def get(self, request, id=None, *args, **kwargs):
         question = Question.objects.get(pk=kwargs["question"])
@@ -99,7 +92,6 @@ class question_edit(View):
         questionToEdit.save()
 
         return redirect("/survey/edit/" + questionToEdit.survey.id)
-
 
 # MODEL-FORMS #
 class SurveyForm(ModelForm):
