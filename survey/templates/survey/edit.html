@@ -7,12 +7,15 @@
         {% csrf_token %} 
         {{ surveyForm }}
         <hr>
-        <input class="btn btn-primary" style="font-size: 20px; height: 4vh; min-height: 35px; width: 100%; padding: 0px; margin: 0px 0px 2.5% 0px" type="submit" value="Save" />
+        <input class="btn btn-primary" 
+            style="font-size: 20px; height: 4vh; min-height: 35px; width: 100%; padding: 0px; margin: 0px 0px 2.5% 0px" 
+            type="submit" value="Save" 
+        />
     </form>
     {% for question in questions %}
     <li>
         {{ question.text }}
-        <button type="button" class="btn btn-edit">
+        <button type="button" class="btn btn-primary">
             <a href="{% url 'question_edit' question=question.id %}">Edit</a>
         </button>
     </li>
