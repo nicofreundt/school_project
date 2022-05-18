@@ -11,16 +11,18 @@
       <button type="button" class="btn btn-primary" 
         style="padding: 0px; margin: 0px 10px 0px 0px" onclick="location.href='{% url 'survey_edit' survey=survey.id %}'">Edit
       </button>
-      <button type="button" class="btn btn-danger" 
-        style="padding: 0px;" onclick="location.href='{% url 'survey_edit' survey=survey.id %}'">Delete
-      </button>
+      <form method="POST">
+        <button type="button" class="btn btn-danger" 
+          style="padding: 0px;" onclick="location.href='{% url 'survey_delete' survey=survey.id %}'">Delete
+        </button>
+       <form>
     </form>
   </li>
   {% endfor %}
 </ul>
 <hr>
 <div style="display: flex; justify-content: center; align-items: center;">
-  <button style="font-size: 20px; height: 6vh; min-height: 35px; width: 100%;" type="button" 
+  <button style="font-size: 20px; height: 6vh; min-height: 35px; width: 100%;" type="submit" 
     class="btn btn-success" onclick="location.href='{% url 'survey_create' %}'">Create Survey
   </button>
 </div>
