@@ -17,9 +17,11 @@ def survey_overview(response):
         {"surveys": Survey.objects.all().order_by("title").iterator()},
     )
 
+
 def survey_delete(request, survey):
-  Survey.objects.get(id=survey).delete()
-  return redirect("/survey/overview")
+    Survey.objects.get(id=survey).delete()
+    return redirect("/survey/overview")
+
 
 class survey_create(View):
     def get(self, request, id=None, *args, **kwargs):
@@ -39,6 +41,7 @@ class survey_create(View):
         ).save()
         return redirect("/survey/overview")
 
+
 class survey_edit(View):
     def get(self, request, id=None, *args, **kwargs):
         survey = Survey.objects.get(pk=kwargs["survey"])
@@ -53,7 +56,11 @@ class survey_edit(View):
         return render(
             request,
             "survey/edit.html",
-            {"surveyForm": surveyFormEdit, "questions": survey.question_set.all()},
+            {
+                "surveyForm": surveyFormEdit,
+                "questions": survey.question_set.all(),
+                "survey": survey.id,
+            },
         )
 
     def post(self, request, id=None, *args, **kwargs):
@@ -70,6 +77,20 @@ class survey_edit(View):
         surveyToEdit.save()
 
         return redirect("/survey/overview")
+
+
+class question_create(View):
+    def get(self, request, id=None, *args, **kwargs):
+        return render(request, "question/create.html", {"questionForm": QuestionForm()})
+
+    def post(self, request, id=None, *args, **kwargs):
+        Question(
+            survey=request.POST.get("survey"),
+            position=request.POST.get("position"),
+            text=request.POST.get("text"),
+        ).save()
+        return redirect("/survey/edit/" + request.POST.get("survey").id)
+
 
 class question_edit(View):
     def get(self, request, id=None, *args, **kwargs):
@@ -96,16 +117,30 @@ class question_edit(View):
 
         return redirect("/survey/edit/" + questionToEdit.survey.id)
 
+
 # MODEL-FORMS #
 class SurveyForm(ModelForm):
     class Meta:
         model = Survey
         fields = ["title", "description", "closed"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control", "style":"margin: 0.5% 0px 1% 0px; padding: 0.5%"}),
-            "description": forms.Textarea(attrs={"class": "form-control", "style":"margin: 0.5% 0px 1% 0px; padding: 0.5%"}),
+            "title": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "style": "margin: 0.5% 0px 1% 0px; padding: 0.5%",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "style": "margin: 0.5% 0px 1% 0px; padding: 0.5%",
+                }
+            ),
             "closed": forms.CheckboxInput(
-                attrs={"class": "form-check form-check-input", "style":"height: 4vh; width: 4vh; margin: 0.5% 0px 0.5% 0px"}
+                attrs={
+                    "class": "form-check form-check-input",
+                    "style": "height: 4vh; width: 4vh; margin: 0.5% 0px 0.5% 0px",
+                }
             ),
         }
 
