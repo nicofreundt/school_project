@@ -13,16 +13,18 @@
         />
     </form>
     <h2> Questions </h2>
-    {% for question in questions %}
     <ol>
-        <li>
-            {{ question.text }}
-            <button type="button" class="btn btn-primary">
-                <a href="{% url 'question_edit' survey=survey question=question.id %}">Edit</a>
-            </button>
-        </li>
+        {% for question in questions %}
+            <li>
+                <div style="padding: 5px; display: grid; grid-auto-flow: column; grid-template-columns: 80%">
+                    {{ question.text }}
+                    <button type="button" class="btn btn-primary" style="padding: 0px; margin: 0px 10px 0px 0px"
+                        onclick="location.href='{% url 'question_edit' survey=survey question=question.id %}'">Edit</a>
+                    </button>
+                </div>
+            </li>
+        {% endfor %}
     </ol>
-    {% endfor %}
     <hr>
     <div style="display: flex; justify-content: center; align-items: center;">
         <button  style="font-size: 20px; height: 4vh; min-height: 35px; width: 100%; padding: 0px; margin: 0px 0px 2.5% 0px" 
