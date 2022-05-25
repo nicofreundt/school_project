@@ -84,12 +84,13 @@ class question_create(View):
         return render(request, "question/create.html", {"questionForm": QuestionForm()})
 
     def post(self, request, id=None, *args, **kwargs):
+        survey_id = request.path_info[13:49]
         Question(
-            survey=request.POST.get("survey"),
+            survey=Survey.objects.get(pk=survey_id),
             position=request.POST.get("position"),
             text=request.POST.get("text"),
         ).save()
-        return redirect("/survey/edit/" + request.POST.get("survey").id)
+        return redirect("/survey/edit/" + survey_id)
 
 
 class question_edit(View):
