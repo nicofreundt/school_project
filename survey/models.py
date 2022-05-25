@@ -37,7 +37,7 @@ class Survey(Model):
 
 class Question(Model):
     survey = ForeignKey(Survey, on_delete=CASCADE)
-    position = IntegerField()
+    position = IntegerField(validators=[MinValueValidator(1)])
     text = TextField()
 
 
