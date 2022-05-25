@@ -11,9 +11,9 @@
       <button type="button" class="btn btn-primary" 
         style="padding: 0px; margin: 0px 10px 0px 0px" onclick="location.href='{% url 'survey_edit' survey=survey.id %}'">Edit
       </button>
-        <button type="button" class="btn btn-danger" 
-          style="padding: 0px;" onclick="location.href='{% url 'survey_delete' survey=survey.id %}'">Delete
-        </button>
+      <button type="button" class="btn btn-danger" 
+        style="padding: 0px;" onclick="location.href='{% url 'survey_delete' survey=survey.id %}'">Delete
+      </button>
     </form>
   </li>
   {% endfor %}
