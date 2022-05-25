@@ -12,6 +12,7 @@
             type="submit" value="Save" 
         />
     </form>
+    <h2> Questions </h2>
     {% for question in questions %}
     <li>
         {{ question.text }}
@@ -19,5 +20,11 @@
             <a href="{% url 'question_edit' question=question.id %}">Edit</a>
         </button>
     </li>
-  {% endfor %}
+    {% endfor %}
+    <hr>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button  style="font-size: 20px; height: 4vh; min-height: 35px; width: 100%; padding: 0px; margin: 0px 0px 2.5% 0px" 
+            type="submit" class="btn btn-success" onclick="location.href='{% url 'question_create' survey=survey %}'">Add Question
+        </button>
+    </div>
 {% endblock %}
