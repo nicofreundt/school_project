@@ -58,7 +58,7 @@ class survey_edit(View):
             "survey/edit.html",
             {
                 "surveyForm": surveyFormEdit,
-                "questions": survey.question_set.all(),
+                "questions": survey.question_set.all().order_by('position'),
                 "survey": survey.id,
             },
         )
