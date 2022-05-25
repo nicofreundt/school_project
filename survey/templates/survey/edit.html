@@ -14,12 +14,14 @@
     </form>
     <h2> Questions </h2>
     {% for question in questions %}
-    <li>
-        {{ question.text }}
-        <button type="button" class="btn btn-primary">
-            <a href="{% url 'question_edit' question=question.id %}">Edit</a>
-        </button>
-    </li>
+    <ol>
+        <li>
+            {{ question.text }}
+            <button type="button" class="btn btn-primary">
+                <a href="{% url 'question_edit' survey=survey question=question.id %}">Edit</a>
+            </button>
+        </li>
+    </ol>
     {% endfor %}
     <hr>
     <div style="display: flex; justify-content: center; align-items: center;">
